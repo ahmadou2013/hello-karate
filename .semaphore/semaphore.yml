@@ -12,4 +12,9 @@ blocks:
           commands:
             - checkout
             - sem-version java 1.8
+            - cache restore
             - mvn -B package --file pom.xml
+            - cache store
+      env_vars:
+        - name: MAVEN_OPTS
+          value: '-Dmaven.repo.local=.m2'
